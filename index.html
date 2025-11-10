@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1A4D2E">
+    <meta name="description" content="تطبيق مفاتيح الجنان - أدعية وأذكار">
+    <title>مفاتيح الجنان</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- صفحة الأقسام الرئيسية -->
+    <div id="sections-page" class="page active">
+        <header>
+            <h1>مفاتيح الجنان</h1>
+            <p class="subtitle">كتاب الأدعية والزيارات</p>
+        </header>
+        
+        <main class="container">
+            <div id="sections-grid" class="sections-grid">
+                <!-- سيتم ملؤها من JavaScript -->
+            </div>
+        </main>
+    </div>
+
+    <!-- صفحة قائمة الأدعية -->
+    <div id="duas-page" class="page">
+        <header>
+            <button class="back-btn" onclick="goBack()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+            <h2 id="section-title"></h2>
+        </header>
+        
+        <main class="container">
+            <div id="duas-list" class="duas-list">
+                <!-- سيتم ملؤها من JavaScript -->
+            </div>
+        </main>
+    </div>
+
+    <!-- صفحة عرض الدعاء -->
+    <div id="dua-reader-page" class="page">
+        <!-- نقطة التحكم -->
+        <div id="control-trigger" class="control-trigger"></div>
+        
+        <!-- محتوى الدعاء -->
+        <div id="dua-content" class="dua-content">
+            <h3 id="dua-title" class="dua-title"></h3>
+            <div id="dua-text" class="dua-text"></div>
+        </div>
+
+        <!-- لوحة التحكم -->
+        <div id="control-panel" class="control-panel">
+            <button class="control-btn" onclick="decreaseFontSize()" title="تصغير الخط">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 7V4h16v3"></path>
+                    <path d="M9 20h6"></path>
+                    <path d="M12 4v16"></path>
+                </svg>
+                <span style="font-size: 14px;">-</span>
+            </button>
+            
+            <button class="control-btn" onclick="increaseFontSize()" title="تكبير الخط">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 7V4h16v3"></path>
+                    <path d="M9 20h6"></path>
+                    <path d="M12 4v16"></path>
+                </svg>
+                <span style="font-size: 18px;">+</span>
+            </button>
+            
+            <button class="control-btn" onclick="toggleTheme()" title="تغيير السمة">
+                <svg id="theme-icon-light" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg id="theme-icon-dark" style="display: none;" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+            
+            <button class="control-btn" onclick="closeReader()" title="إغلاق">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

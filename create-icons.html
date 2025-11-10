@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>إنشاء أيقونات التطبيق</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        canvas {
+            border: 1px solid #ccc;
+            margin: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>إنشاء أيقونات التطبيق</h1>
+    <p>انقر على الأزرار لتحميل الأيقونات</p>
+    
+    <canvas id="canvas192" width="192" height="192"></canvas>
+    <canvas id="canvas512" width="512" height="512"></canvas>
+    
+    <br>
+    <button onclick="downloadIcon(192)">تحميل أيقونة 192x192</button>
+    <button onclick="downloadIcon(512)">تحميل أيقونة 512x512</button>
+    
+    <script>
+        function createIcon(size) {
+            const canvas = document.getElementById('canvas' + size);
+            const ctx = canvas.getContext('2d');
+            
+            // خلفية خضراء
+            ctx.fillStyle = '#1A4D2E';
+            ctx.fillRect(0, 0, size, size);
+            
+            // نص عربي
+            ctx.fillStyle = '#D4AF37';
+            ctx.font = 'bold ' + (size * 0.15) + 'px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('مفاتيح', size / 2, size / 2 - size * 0.1);
+            ctx.fillText('الجنان', size / 2, size / 2 + size * 0.1);
+            
+            // رمز الهلال
+            ctx.strokeStyle = '#D4AF37';
+            ctx.lineWidth = size * 0.02;
+            ctx.beginPath();
+            ctx.arc(size / 2, size * 0.25, size * 0.08, 0, Math.PI * 2);
+            ctx.stroke();
+        }
+        
+        function downloadIcon(size) {
+            const canvas = document.getElementById('canvas' + size);
+            const link = document.createElement('a');
+            link.download = 'icon-' + size + '.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+        
+        // إنشاء الأيقونات عند تحميل الصفحة
+        createIcon(192);
+        createIcon(512);
+    </script>
+</body>
+</html>

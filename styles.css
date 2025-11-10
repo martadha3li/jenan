@@ -1,0 +1,422 @@
+/* ========================================
+   Variables & Root
+   ======================================== */
+:root {
+    /* Colors - Light Mode */
+    --primary-700: #1A4D2E;
+    --primary-500: #4F6F52;
+    --accent-500: #D4AF37;
+    --background-light: #FDFBF5;
+    --surface-light: #FFFFFF;
+    --text-primary-light: #212121;
+    --text-secondary-light: #616161;
+    
+    /* Colors - Dark Mode */
+    --background-dark: #121212;
+    --surface-dark: #1E1E1E;
+    --text-primary-dark: #E0E0E0;
+    --text-secondary-dark: #BDBDBD;
+    
+    /* Active Colors */
+    --bg-color: var(--background-light);
+    --surface-color: var(--surface-light);
+    --text-primary: var(--text-primary-light);
+    --text-secondary: var(--text-secondary-light);
+    
+    /* Spacing */
+    --space-xs: 8px;
+    --space-sm: 16px;
+    --space-md: 24px;
+    --space-lg: 32px;
+    --space-xl: 48px;
+    --space-xxl: 64px;
+    
+    /* Radius & Shadows */
+    --radius-md: 12px;
+    --shadow-md: 0px 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0px 8px 24px rgba(0, 0, 0, 0.15);
+    
+    /* Typography */
+    --font-heading: 'Amiri', serif;
+    --font-body: 'Noto Sans Arabic', sans-serif;
+    
+    /* Font Sizes */
+    --fs-h1: 32px;
+    --fs-h2: 24px;
+    --fs-h3: 20px;
+    --fs-body: 18px;
+    --fs-small: 14px;
+}
+
+/* Dark Mode */
+body.dark-mode {
+    --bg-color: var(--background-dark);
+    --surface-color: var(--surface-dark);
+    --text-primary: var(--text-primary-dark);
+    --text-secondary: var(--text-secondary-dark);
+    --shadow-md: 0px 4px 12px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0px 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* ========================================
+   Base Styles
+   ======================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    line-height: 1.8;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
+}
+
+/* ========================================
+   Page Management
+   ======================================== */
+.page {
+    display: none;
+    min-height: 100vh;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================================
+   Header
+   ======================================== */
+header {
+    background-color: var(--primary-700);
+    color: white;
+    padding: var(--space-lg) var(--space-md);
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header h1 {
+    font-family: var(--font-heading);
+    font-size: var(--fs-h1);
+    font-weight: 700;
+    margin-bottom: var(--space-xs);
+}
+
+header h2 {
+    font-family: var(--font-heading);
+    font-size: var(--fs-h2);
+    font-weight: 600;
+}
+
+.subtitle {
+    font-size: var(--fs-small);
+    opacity: 0.9;
+    margin-top: var(--space-xs);
+}
+
+.back-btn {
+    position: absolute;
+    right: var(--space-md);
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: var(--space-xs);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s ease;
+}
+
+.back-btn:hover {
+    opacity: 0.7;
+}
+
+/* ========================================
+   Container
+   ======================================== */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: var(--space-lg) var(--space-md);
+}
+
+/* ========================================
+   Sections Grid (Main Page)
+   ======================================== */
+.sections-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+}
+
+@media (min-width: 768px) {
+    .sections-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1200px) {
+    .sections-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.section-card {
+    background-color: var(--surface-color);
+    padding: var(--space-md);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    text-align: center;
+}
+
+.section-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.section-icon {
+    font-size: 48px;
+    margin-bottom: var(--space-sm);
+    color: var(--primary-500);
+}
+
+.section-card h3 {
+    font-family: var(--font-heading);
+    font-size: var(--fs-h2);
+    font-weight: 600;
+    color: var(--primary-700);
+    margin-bottom: var(--space-xs);
+}
+
+.section-card p {
+    font-size: var(--fs-small);
+    color: var(--text-secondary);
+}
+
+/* ========================================
+   Duas List
+   ======================================== */
+.duas-list {
+    background-color: var(--surface-color);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+}
+
+.dua-item {
+    padding: var(--space-md);
+    border-bottom: 1px solid var(--accent-500);
+    cursor: pointer;
+    transition: background-color 0.2s ease-out;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dua-item:last-child {
+    border-bottom: none;
+}
+
+.dua-item:hover {
+    background-color: rgba(79, 111, 82, 0.1);
+}
+
+.dua-item h3 {
+    font-family: var(--font-heading);
+    font-size: var(--fs-h3);
+    font-weight: 600;
+    color: var(--text-primary);
+    transition: color 0.2s ease;
+}
+
+.dua-item:hover h3 {
+    color: var(--primary-700);
+}
+
+.dua-item svg {
+    color: var(--text-secondary);
+    flex-shrink: 0;
+}
+
+/* ========================================
+   Dua Reader
+   ======================================== */
+#dua-reader-page {
+    background-color: var(--bg-color);
+    padding: var(--space-xxl) var(--space-xl);
+    position: relative;
+}
+
+.control-trigger {
+    position: fixed;
+    top: var(--space-md);
+    right: var(--space-md);
+    width: 12px;
+    height: 12px;
+    background-color: var(--text-secondary);
+    border-radius: 50%;
+    opacity: 0.4;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+    z-index: 200;
+}
+
+.control-trigger:hover {
+    opacity: 0.8;
+}
+
+.dua-content {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.dua-title {
+    font-family: var(--font-heading);
+    font-size: var(--fs-h2);
+    font-weight: 700;
+    color: var(--primary-700);
+    margin-bottom: var(--space-xl);
+    padding-bottom: var(--space-md);
+    border-bottom: 2px solid var(--accent-500);
+}
+
+.dua-text {
+    font-family: var(--font-body);
+    font-size: var(--fs-body);
+    line-height: 1.8;
+    color: var(--text-primary);
+    text-align: justify;
+    white-space: pre-wrap;
+}
+
+/* ========================================
+   Control Panel
+   ======================================== */
+.control-panel {
+    position: fixed;
+    bottom: var(--space-md);
+    left: 50%;
+    transform: translateX(-50%) translateY(120px);
+    background-color: var(--surface-color);
+    backdrop-filter: blur(8px);
+    padding: var(--space-sm);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    gap: var(--space-sm);
+    opacity: 0;
+    transition: all 0.3s ease-out;
+    z-index: 300;
+}
+
+.control-panel.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+.control-btn {
+    width: 48px;
+    height: 48px;
+    border: none;
+    background-color: transparent;
+    color: var(--text-primary);
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s ease;
+    position: relative;
+}
+
+.control-btn:hover {
+    background-color: rgba(79, 111, 82, 0.1);
+}
+
+.control-btn:active {
+    transform: scale(0.95);
+}
+
+/* ========================================
+   Responsive
+   ======================================== */
+@media (max-width: 768px) {
+    :root {
+        --fs-h1: 28px;
+        --fs-h2: 20px;
+        --fs-h3: 18px;
+    }
+    
+    .container {
+        padding: var(--space-md) var(--space-sm);
+    }
+    
+    #dua-reader-page {
+        padding: var(--space-lg) var(--space-md);
+    }
+    
+    .dua-text {
+        font-size: 16px;
+    }
+}
+
+/* ========================================
+   PWA Install Button (Optional)
+   ======================================== */
+.install-btn {
+    position: fixed;
+    bottom: var(--space-md);
+    left: var(--space-md);
+    background-color: var(--primary-700);
+    color: white;
+    padding: var(--space-sm) var(--space-md);
+    border: none;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: var(--fs-small);
+    display: none;
+    z-index: 400;
+}
+
+.install-btn.show {
+    display: block;
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
