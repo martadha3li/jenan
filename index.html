@@ -13,11 +13,64 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- شريط البيانات في الأعلى -->
+    <div class="header-bar" id="main-header">
+        <div class="date-info">
+            <div class="hijri-date" id="hijri-date">
+                <span class="date-label">الهجري:</span>
+                <span id="hijri-day">--</span>
+                <span id="hijri-month">----</span>
+                <span id="hijri-year">----</span>
+            </div>
+            <div class="gregorian-date" id="gregorian-date">
+                <span class="date-label">الميلادي:</span>
+                <span id="gregorian-day">--</span>
+                <span id="gregorian-month">----</span>
+                <span id="gregorian-year">----</span>
+            </div>
+            <div class="events" id="daily-events">
+                <span class="event-label">مناسبة اليوم:</span>
+                <span id="today-event">--</span>
+                <span class="event-label">مناسبة الغد:</span>
+                <span id="tomorrow-event">--</span>
+            </div>
+        </div>
+        <div class="month-events" id="month-events">
+            <span class="event-label">مناسبات الشهر:</span>
+            <div id="month-events-list" class="events-list">
+                <!-- سيتم ملؤها من JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- صفحة المفضلة -->
+    <div id="favorites-page" class="page">
+        <header class="page-header">
+            <button class="back-btn" onclick="showPage('sections-page')">←</button>
+            <div>
+                <h1>المفضلة</h1>
+                <p class="subtitle">الأدعية المختارة</p>
+            </div>
+        </header>
+        <main class="container">
+            <div id="favorites-grid" class="duas-grid">
+                <!-- سيتم ملؤها من JavaScript -->
+            </div>
+        </main>
+    </div>
+
     <!-- صفحة الأقسام الرئيسية -->
     <div id="sections-page" class="page active">
-        <header>
+        <header class="main-header">
             <h1>مفاتيح الجنان</h1>
             <p class="subtitle">كتاب الأدعية والزيارات</p>
+            <div class="favorites-btn-container">
+                <button class="favorites-btn" onclick="showFavorites()">
+                    <span class="icon">❤️</span>
+                    <span class="text">المفضلة</span>
+                    <span class="count" id="favorites-count">0</span>
+                </button>
+            </div>
         </header>
         
         <main class="container">
@@ -74,6 +127,12 @@
                     <path d="M12 4v16"></path>
                 </svg>
                 <span style="font-size: 18px;">+</span>
+            </button>
+            
+            <button class="control-btn" onclick="toggleFavorite()" title="المفضلة">
+                <svg id="favorite-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
             </button>
             
             <button class="control-btn" onclick="toggleTheme()" title="تغيير السمة">

@@ -48,6 +48,90 @@
     --fs-small: 14px;
 }
 
+/* ========================================
+   شريط البيانات العلوي
+======================================== */
+.header-bar {
+    background: linear-gradient(135deg, #1A4D2E, #2D6A3D);
+    color: white;
+    padding: 12px 16px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.date-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.hijri-date, .gregorian-date {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+}
+
+.date-label {
+    font-weight: 600;
+    color: #B8E6C1;
+    font-size: 12px;
+}
+
+.events {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    flex-wrap: wrap;
+}
+
+.event-label {
+    font-weight: 600;
+    color: #B8E6C1;
+    font-size: 12px;
+}
+
+.month-events {
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 8px;
+    margin-top: 8px;
+}
+
+.events-list {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 4px;
+}
+
+.month-event {
+    background: rgba(255,255,255,0.2);
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .date-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .events {
+        font-size: 12px;
+    }
+    
+    .hijri-date, .gregorian-date {
+        font-size: 12px;
+    }
+}
+}
+
 /* Dark Mode */
 body.dark-mode {
     --bg-color: var(--background-dark);
@@ -56,6 +140,219 @@ body.dark-mode {
     --text-secondary: var(--text-secondary-dark);
     --shadow-md: 0px 4px 12px rgba(0, 0, 0, 0.3);
     --shadow-lg: 0px 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* ========================================
+   زر المفضلة الرئيسي
+======================================== */
+.favorites-btn-container {
+    margin-top: 16px;
+}
+
+.favorites-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #FF6B6B, #FF8E8E);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: var(--radius-md);
+    font-size: var(--fs-body);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-md);
+}
+
+.favorites-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.favorites-btn .count {
+    background: rgba(255, 255, 255, 0.3);
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: var(--fs-small);
+    font-weight: 700;
+}
+
+.favorites-btn .icon {
+    font-size: 18px;
+}
+
+/* زر المفضلة في لوحة التحكم */
+.favorite-btn {
+    position: fixed;
+    top: 60px;
+    right: 16px;
+    background: #FF6B6B;
+    color: white;
+    border: none;
+    padding: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+    z-index: 1001;
+}
+
+.favorite-btn:hover {
+    transform: scale(1.1);
+}
+
+.favorite-btn.active {
+    background: #FF1744;
+}
+
+/* أيقونة المفضلة في لوحة التحكم */
+.control-btn[onclick="toggleFavorite()"] svg {
+    fill: currentColor;
+    transition: all 0.3s ease;
+}
+
+.control-btn[onclick="toggleFavorite()"]:active svg,
+.control-btn[onclick="toggleFavorite()"]:focus svg {
+    fill: #FF6B6B;
+}
+
+body.dark-mode .favorite-btn {
+    background: #4A5568;
+}
+
+body.dark-mode .favorite-btn:hover {
+    background: #2D3748;
+}
+
+/* إعدادات خاصة بشريط التاريخ في Dark Mode */
+body.dark-mode .header-bar {
+    background: linear-gradient(135deg, #2D3748, #4A5568);
+}
+
+body.dark-mode .month-events {
+    background: rgba(0,0,0,0.2);
+}
+
+body.dark-mode .month-event {
+    background: rgba(0,0,0,0.3);
+}
+
+/* ========================================
+   إشعارات التطبيق
+======================================== */
+.notification {
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-20px);
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: var(--fs-body);
+    font-weight: 600;
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.notification.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* ========================================
+   حالة فارغة للمفضلة
+======================================== */
+.empty-state {
+    text-align: center;
+    padding: var(--space-xxl) var(--space-md);
+    color: var(--text-secondary);
+}
+
+.empty-state .icon {
+    font-size: 64px;
+    display: block;
+    margin-bottom: var(--space-md);
+    opacity: 0.5;
+}
+
+.empty-state h3 {
+    font-size: var(--fs-h3);
+    color: var(--text-primary);
+    margin-bottom: var(--space-sm);
+}
+
+.empty-state p {
+    font-size: var(--fs-body);
+    line-height: 1.6;
+}
+
+/* ========================================
+   زر إزالة من المفضلة
+======================================== */
+.remove-favorite {
+    background: linear-gradient(135deg, #FF6B6B, #FF5252);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: var(--space-sm);
+}
+
+.remove-favorite:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+}
+
+/* ========================================
+   معاينة الدعاء في المفضلة
+======================================== */
+.dua-preview {
+    color: var(--text-secondary);
+    font-size: var(--fs-small);
+    line-height: 1.5;
+    margin: var(--space-sm) 0;
+    font-style: italic;
+}
+
+/* ========================================
+   مناسبات بدون أحداث
+======================================== */
+.no-events {
+    color: var(--text-secondary);
+    font-style: italic;
+    font-size: var(--fs-small);
+}
+
+/* ========================================
+   تحسينات الاستجابة
+======================================== */
+@media (max-width: 768px) {
+    .notification {
+        top: 70px;
+        padding: 10px 20px;
+        font-size: var(--fs-small);
+    }
+    
+    .empty-state {
+        padding: var(--space-xl) var(--space-sm);
+    }
+    
+    .empty-state .icon {
+        font-size: 48px;
+    }
+    
+    .remove-favorite {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
 }
 
 /* ========================================

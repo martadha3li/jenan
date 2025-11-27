@@ -1,7 +1,7 @@
 {
-  "name": "مفاتيح الجنان",
+  "name": "مفاتيح الجنان - التطبيق الشامل",
   "short_name": "مفاتيح الجنان",
-  "description": "تطبيق أدعية وأذكار مفاتيح الجنان",
+  "description": "تطبيق أدعية وأذكار مفاتيح الجنان مع المناسبات والتاريخ الهجري",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#FDFBF5",
@@ -23,7 +23,7 @@
       "purpose": "any maskable"
     }
   ],
-  "categories": ["books", "education", "lifestyle"],
+  "categories": ["books", "education", "lifestyle", "religion"],
   "shortcuts": [
     {
       "name": "أدعية الصباح والمساء",
@@ -31,9 +31,29 @@
       "description": "أدعية الصباح والمساء"
     },
     {
-      "name": "دعاء كميل",
-      "url": "/#dua-13",
-      "description": "دعاء كميل بن زياد"
+      "name": "شهر رمضان",
+      "url": "/#section-3",
+      "description": "أدعية شهر رمضان وليالي القدر"
+    },
+    {
+      "name": "شهر رجب",
+      "url": "/#section-4",
+      "description": "أدعية وأعمال شهر رجب"
+    },
+    {
+      "name": "شهر شعبان",
+      "url": "/#section-5",
+      "description": "أدعية وأعمال شهر شعبان"
+    },
+    {
+      "name": "تعقيبات الصلوات",
+      "url": "/#section-6",
+      "description": "تعقيبات الصلوات الخمس"
+    },
+    {
+      "name": "المفضلة",
+      "url": "/#favorites",
+      "description": "الأدعية المفضلة"
     }
   ]
 }
