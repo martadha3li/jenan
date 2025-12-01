@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختبار تطبيق مفاتيح الجنان</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            direction: rtl;
+            padding: 20px;
+        }
+        .test-result {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <h1>اختبار تطبيق مفاتيح الجنان</h1>
+    <div id="test-results"></div>
+
+    <script src="app.js"></script>
+    <script>
+        function addTestResult(message, isSuccess) {
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `test-result ${isSuccess ? 'success' : 'error'}`;
+            resultDiv.textContent = message;
+            document.getElementById('test-results').appendChild(resultDiv);
+        }
+
+        // اختبار تحميل البيانات
+        try {
+            if (typeof sections !== 'undefined' && sections.length > 0) {
+                addTestResult(`✅ تم تحميل الأقسام بنجاح: ${sections.length} قسم`, true);
+            } else {
+                addTestResult('❌ فشل في تحميل الأقسام', false);
+            }
+        } catch (e) {
+            addTestResult(`❌ خطأ في تحميل الأقسام: ${e.message}`, false);
+        }
+
+        // اختبار تحميل الأدعية
+        try {
+            if (typeof duas !== 'undefined' && Object.keys(duas).length > 0) {
+                addTestResult(`✅ تم تحميل الأدعية بنجاح: ${Object.keys(duas).length} قسم`, true);
+            } else {
+                addTestResult('❌ فشل في تحميل الأدعية', false);
+            }
+        } catch (e) {
+            addTestResult(`❌ خطأ في تحميل الأدعية: ${e.message}`, false);
+        }
+
+        // اختبار عناصر HTML
+        const requiredElements = ['main-header', 'sections-page', 'favorites-btn'];
+        requiredElements.forEach(id => {
+            const element = document.getElementById(id);
+            if (element) {
+                addTestResult(`✅ عنصر ${id} موجود`, true);
+            } else {
+                addTestResult(`❌ عنصر ${id} غير موجود`, false);
+            }
+        });
+    </script>
+</body>
+</html>
