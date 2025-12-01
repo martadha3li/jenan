@@ -62,16 +62,41 @@
     <!-- صفحة الأقسام الرئيسية -->
     <div id="sections-page" class="page active">
         <header class="main-header">
-            <h1>مفاتيح الجنان</h1>
-            <p class="subtitle">كتاب الأدعية والزيارات</p>
-            <div class="favorites-btn-container">
-                <button class="favorites-btn" onclick="showFavorites()">
+            <div class="header-top">
+                <button class="nav-menu-btn" onclick="toggleMenu()" title="القائمة">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+                <h1>مفاتيح الجنان</h1>
+                <button class="favorites-btn-mini" onclick="showFavorites()" title="المفضلة">
                     <span class="icon">❤️</span>
-                    <span class="text">المفضلة</span>
                     <span class="count" id="favorites-count">0</span>
                 </button>
             </div>
+            <p class="subtitle">كتاب الأدعية والزيارات</p>
         </header>
+        
+        <!-- القائمة المخفية -->
+        <div id="side-menu" class="side-menu">
+            <div class="menu-header">
+                <h3>القائمة الرئيسية</h3>
+                <button class="close-menu-btn" onclick="toggleMenu()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="menu-content" id="menu-content">
+                <!-- سيتم ملؤها من JavaScript -->
+            </div>
+        </div>
+        
+        <!-- طبقة الخلفية للقائمة -->
+        <div id="menu-overlay" class="menu-overlay" onclick="toggleMenu()"></div>
         
         <main class="container">
             <div id="sections-grid" class="sections-grid">
@@ -83,11 +108,19 @@
     <!-- صفحة قائمة الأدعية -->
     <div id="duas-page" class="page">
         <header>
-            <button class="back-btn" onclick="goBack()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="15 18 9 12 15 6"></polyline>
-                </svg>
-            </button>
+            <div class="header-nav">
+                <button class="home-btn" onclick="goHome()" title="الرئيسية">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                </button>
+                <button class="back-btn" onclick="goBack()" title="الرجوع">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+            </div>
             <h2 id="section-title"></h2>
         </header>
         
@@ -111,6 +144,19 @@
 
         <!-- لوحة التحكم -->
         <div id="control-panel" class="control-panel">
+            <button class="control-btn" onclick="goHome()" title="الرئيسية">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+            </button>
+            
+            <button class="control-btn" onclick="goBack()" title="الرجوع">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+            
             <button class="control-btn" onclick="decreaseFontSize()" title="تصغير الخط">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M4 7V4h16v3"></path>
